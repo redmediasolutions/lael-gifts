@@ -1,0 +1,141 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const categories = ['Wellness', 'Home & Decor', 'Gourmet Food', 'Special Occasions'];
+
+const products = [
+  { name: 'Evening Serenity Ritual Set', cat: 'Wellness', price: '₹7,055', tag: 'New Arrival',
+    img: 'https://images.unsplash.com/photo-1602874801007-bd458bb1b8b6?auto=format&fit=crop&w=700&q=80' },
+  { name: 'Hand-Woven Linen Table Set', cat: 'Home', price: '₹9,960',
+    img: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=700&q=80' },
+  { name: "The Connoisseur's Tea Box", cat: 'Food', price: '₹5,395', tag: 'Bestseller',
+    img: 'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?auto=format&fit=crop&w=700&q=80' },
+  { name: 'Botanical Radiance Set', cat: 'Wellness', price: '₹7,636',
+    img: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=700&q=80' },
+  { name: 'Hand-Blown Amber Glassware', cat: 'Home', price: '₹12,035',
+    img: 'https://images.unsplash.com/photo-1516600164266-f3b8166ae679?auto=format&fit=crop&w=700&q=80' },
+  { name: "The Writer's Gold Keepsake", cat: 'Stationery', price: '₹3,735',
+    img: 'https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=700&q=80' },
+];
+---
+
+<Layout title="The Gift Collection — Serene Gifting">
+  <Header active="shop" />
+  <main class="collection">
+    <div class="container">
+      <header class="page-head">
+        <h1>The Gift Collection</h1>
+        <p>A curated selection of intentional gifts designed to celebrate life's meaningful
+          moments. From artisan-crafted home goods to holistic wellness essentials.</p>
+      </header>
+
+      <div class="layout">
+        <aside class="filters">
+          <div class="filter-group">
+            <span class="filter-title">Categories</span>
+            {categories.map((c) => (
+              <label class="check"><input type="checkbox" /> <span>{c}</span></label>
+            ))}
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-title">Price Range</span>
+            <input class="range" type="range" min="0" max="100" value="55" />
+            <div class="range-labels"><span>₹0</span><span>₹40,000+</span></div>
+          </div>
+
+          <div class="promo">
+            <div class="promo-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="8" width="18" height="13" rx="1"></rect><path d="M3 8l3-4h12l3 4M12 8v13"></path>
+              </svg>
+            </div>
+            <h4>Artisan Gift Wrapping</h4>
+            <p>Every order includes our signature hand-wrapped eco-friendly packaging.</p>
+            <a href="#" class="promo-link">Learn More</a>
+          </div>
+        </aside>
+
+        <section class="grid">
+          {products.map((p) => (
+            <a href="/product" class="card">
+              <div class="thumb">
+                {p.tag && <span class={`tag ${p.tag === 'Bestseller' ? 'best' : ''}`}>{p.tag}</span>}
+                <img src={p.img} alt={p.name} />
+              </div>
+              <span class="cat">{p.cat}</span>
+              <h3>{p.name}</h3>
+              <span class="price">{p.price}</span>
+            </a>
+          ))}
+        </section>
+      </div>
+
+      <nav class="pager">
+        <button aria-label="Previous">‹</button>
+        <span>1 of 5</span>
+        <button aria-label="Next">›</button>
+      </nav>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .collection { background: var(--cream); padding: 56px 0 80px; }
+  .page-head { max-width: 560px; margin-bottom: 40px; }
+  .page-head h1 { font-size: 2.8rem; }
+  .page-head p { margin-top: 14px; font-size: 0.9rem; color: var(--muted); }
+
+  .layout { display: grid; grid-template-columns: 220px 1fr; gap: 40px; }
+
+  .filter-group { margin-bottom: 30px; }
+  .filter-title {
+    display: block; font-family: var(--sans); font-size: 0.62rem; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+  }
+  .check { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; margin-bottom: 11px; cursor: pointer; }
+  .check input { accent-color: var(--accent); width: 15px; height: 15px; }
+
+  .range { width: 100%; accent-color: var(--accent); }
+  .range-labels { display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--muted); margin-top: 4px; }
+
+  .promo { border: 1px solid var(--line); background: var(--paper); padding: 20px; margin-top: 10px; }
+  .promo-icon { color: var(--tag); margin-bottom: 10px; }
+  .promo h4 { font-family: var(--serif); font-size: 1.05rem; }
+  .promo p { font-size: 0.76rem; color: var(--muted); margin: 8px 0 12px; }
+  .promo-link { font-size: 0.76rem; color: var(--tag); border-bottom: 1px solid var(--tag); padding-bottom: 1px; }
+
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; align-content: start; }
+  .card { display: block; }
+  .thumb { position: relative; aspect-ratio: 1/1; overflow: hidden; background: var(--paper); }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .card:hover .thumb img { transform: scale(1.05); }
+  .tag {
+    position: absolute; top: 12px; left: 12px; z-index: 2; background: rgba(255,255,255,0.92);
+    color: var(--ink); font-size: 0.56rem; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; padding: 5px 9px;
+  }
+  .tag.best { top: 0; left: auto; right: 0; background: var(--accent); color: #fff; }
+  .cat {
+    display: block; margin-top: 14px; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .card h3 { font-family: var(--serif); font-size: 1.15rem; margin-top: 6px; }
+  .price { display: block; margin-top: 5px; font-size: 0.8rem; color: var(--accent); }
+
+  .pager { display: flex; justify-content: center; align-items: center; gap: 18px; margin-top: 54px; }
+  .pager button {
+    width: 40px; height: 40px; border: 1px solid var(--line); background: var(--paper);
+    border-radius: 999px; cursor: pointer; font-size: 1.1rem; color: var(--ink);
+  }
+  .pager span { font-size: 0.82rem; color: var(--muted); }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+</style>

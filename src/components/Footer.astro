@@ -1,0 +1,70 @@
+---
+const cols = [
+  { title: 'Shop', links: ['Shop All', 'New Arrivals', 'Best Sellers'] },
+  { title: 'Care', links: ['Shipping Policy', 'Returns', 'FAQs'] },
+  { title: 'Connect', links: ['Our Story', 'Contact Us', 'Instagram'] },
+  { title: 'Legal', links: ['Privacy', 'Terms'] },
+];
+---
+
+<footer class="site-footer">
+  <div class="container grid">
+    <div class="brand">
+      <h3>SERENE GIFTING</h3>
+      <p>© 2024 Serene Gifting. Artisanal craftsmanship for meaningful connections.</p>
+    </div>
+    {cols.map((c) => (
+      <div class="col">
+        <span class="col-title">{c.title}</span>
+        <ul>
+          {c.links.map((l) => <li><a href="#">{l}</a></li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--cream-soft);
+    border-top: 1px solid var(--line);
+    padding: 56px 0;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1.8fr repeat(4, 1fr);
+    gap: 28px;
+  }
+  .brand h3 {
+    font-size: 1.05rem;
+    letter-spacing: 0.16em;
+  }
+  .brand p {
+    margin-top: 12px;
+    font-size: 0.76rem;
+    color: var(--muted);
+    max-width: 220px;
+  }
+  .col-title {
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .col ul { list-style: none; margin: 14px 0 0; padding: 0; }
+  .col li { margin-bottom: 9px; }
+  .col a {
+    font-size: 0.8rem;
+    color: var(--ink);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+  }
+  .col a:hover { border-bottom-color: var(--ink); }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr 1fr; }
+    .brand { grid-column: 1 / -1; }
+  }
+</style>

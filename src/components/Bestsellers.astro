@@ -1,0 +1,131 @@
+---
+const products = [
+  {
+    name: 'Quiet Morning Set',
+    price: '₹7,055',
+    tag: 'Handmade',
+    swatches: ['#c9a87a', '#a4551f'],
+    img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=80',
+    alt: 'Quiet Morning Set — coffee cup and artisan packaging',
+  },
+  {
+    name: 'Botanical Ritual',
+    price: '₹9,130',
+    swatches: ['#8a7f70'],
+    img: 'https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?auto=format&fit=crop&w=700&q=80',
+    alt: 'Botanical Ritual — dried florals and jars in a gift box',
+  },
+  {
+    name: 'Epicurean Box',
+    price: '₹12,035',
+    swatches: ['#3b342b'],
+    img: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=700&q=80',
+    alt: 'Epicurean Box — bottle and gourmet tasting set on a board',
+  },
+  {
+    name: 'Sanctuary Spa Set',
+    price: '₹5,976',
+    tag: 'New Arrival',
+    swatches: ['#9caa8f'],
+    img: 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=700&q=80',
+    alt: 'Sanctuary Spa Set — folded linens in a kraft gift box',
+  },
+];
+---
+
+<section class="bestsellers" id="bestsellers">
+  <div class="container">
+    <div class="head">
+      <span class="eyebrow">Our Favorites</span>
+      <h2>Bestselling Gift Sets</h2>
+    </div>
+
+    <div class="products">
+      {products.map((p) => (
+        <a href="#" class="product">
+          <div class="thumb">
+            {p.tag && <span class={`ptag ${p.tag === 'New Arrival' ? 'new' : ''}`}>{p.tag}</span>}
+            <img src={p.img} alt={p.alt} />
+          </div>
+          <h3 class="pname">{p.name}</h3>
+          <span class="pprice">{p.price}</span>
+          <span class="swatches">
+            {p.swatches.map((c) => <i style={`background:${c}`}></i>)}
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .bestsellers { background: var(--cream); padding-top: 0; }
+  .head { text-align: center; margin-bottom: 34px; }
+  .head h2 { font-size: 1.7rem; margin-top: 8px; }
+
+  .products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+  .product { display: block; }
+  .thumb {
+    position: relative;
+    background: var(--paper);
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+  }
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .product:hover .thumb img { transform: scale(1.05); }
+
+  .ptag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
+    background: rgba(255,255,255,0.9);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 0.56rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 5px 9px;
+  }
+  .ptag.new {
+    top: 0;
+    left: auto;
+    right: 0;
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .pname {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    margin-top: 14px;
+  }
+  .pprice {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .swatches { display: flex; gap: 6px; margin-top: 10px; }
+  .swatches i {
+    width: 11px;
+    height: 11px;
+    border-radius: 999px;
+    display: inline-block;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+  }
+
+  @media (max-width: 900px) {
+    .products { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Contact — Serene Gifting">
+  <Header active="contact" />
+  <main class="contact">
+    <section class="head">
+      <div class="container">
+        <h1>Connect with Serene Gifting</h1>
+        <p>Whether you have a question about our curated sets or need assistance with a custom order,
+          our intentional giving team is here to help.</p>
+      </div>
+    </section>
+
+    <section class="body">
+      <div class="container body-grid">
+        <div class="info">
+          <h2>Our Studio</h2>
+          <div class="info-item">
+            <span class="ic">📍</span>
+            <div><strong>Physical Atelier</strong><p>122 High Street, Suite 400<br />London, UK EC1V 4PY</p></div>
+          </div>
+          <div class="info-item">
+            <span class="ic">📞</span>
+            <div><strong>Client Support</strong><p>+44 (0) 20 7946 0123<br /><span class="fine">MON–FRI 9AM – 6PM GMT</span></p></div>
+          </div>
+          <div class="info-item">
+            <span class="ic">✉️</span>
+            <div><strong>General Inquiries</strong><p>hello@serenegifting.com</p></div>
+          </div>
+
+          <div class="community">
+            <h3>Join Our Community</h3>
+            <div class="socials">
+              <a href="#" aria-label="Share">⇗</a>
+              <a href="#" aria-label="Instagram">◎</a>
+              <a href="#" aria-label="RSS">≋</a>
+            </div>
+          </div>
+
+          <div class="map">
+            <img src="https://staticmap.openstreetmap.de/staticmap.php?center=51.5245,-0.0987&zoom=12&size=600x260&maptype=mapnik" alt="Map of the London studio location" onerror="this.style.display='none';this.parentNode.classList.add('map-fallback')" />
+            <a href="#" class="map-btn">View Larger Map</a>
+          </div>
+        </div>
+
+        <form class="form" onsubmit="return false;">
+          <h2>Send a Message</h2>
+          <p class="form-sub"><em>We aim to respond to all inquiries within 24 hours.</em></p>
+
+          <div class="row">
+            <label>Full Name<input type="text" placeholder="Eleanor Vance" /></label>
+            <label>Email Address<input type="email" placeholder="eleanor@example.com" /></label>
+          </div>
+          <label class="block">Reason for Inquiry
+            <select>
+              <option>Curated Gift Sets</option>
+              <option>Custom / Corporate Orders</option>
+              <option>Order Status</option>
+              <option>Press &amp; Partnerships</option>
+            </select>
+          </label>
+          <label class="block">Your Message
+            <textarea rows="5" placeholder="How can we help you create a meaningful moment today?"></textarea>
+          </label>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="banner">
+      <img src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=1600&q=80" alt="Silk ribbon and lavender on a gift wrapping table" />
+      <div class="banner-overlay"></div>
+      <div class="banner-copy">
+        <h2>Gifting is an Art</h2>
+        <p>We treat every package as a masterpiece of connection.</p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .head { background: var(--cream-soft); text-align: center; padding: 60px 0; }
+  .head h1 { font-size: 2.8rem; }
+  .head p { max-width: 520px; margin: 16px auto 0; font-size: 0.9rem; color: var(--muted); }
+
+  .body { background: var(--paper); }
+  .body-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; }
+
+  .info h2 { font-size: 1.5rem; margin-bottom: 26px; }
+  .info-item { display: flex; gap: 14px; margin-bottom: 22px; }
+  .info-item .ic { font-size: 1rem; }
+  .info-item strong { font-size: 0.9rem; }
+  .info-item p { margin: 4px 0 0; font-size: 0.84rem; color: var(--muted); }
+  .fine { font-size: 0.68rem; letter-spacing: 0.1em; }
+
+  .community { border-top: 1px solid var(--line); margin-top: 12px; padding-top: 26px; }
+  .community h3 { font-family: var(--serif); font-size: 1.4rem; margin-bottom: 16px; }
+  .socials { display: flex; gap: 12px; }
+  .socials a {
+    width: 38px; height: 38px; border: 1px solid var(--line); display: inline-flex;
+    align-items: center; justify-content: center; color: var(--muted); background: var(--cream-soft);
+  }
+  .map { position: relative; margin-top: 26px; background: #dfe4dc; min-height: 200px; overflow: hidden; }
+  .map img { width: 100%; height: 200px; object-fit: cover; filter: grayscale(0.3); }
+  .map-btn {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+    background: var(--paper); padding: 12px 20px; font-size: 0.66rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink);
+  }
+
+  .form { background: var(--cream-soft); border: 1px solid var(--line); padding: 34px; }
+  .form h2 { font-size: 1.5rem; }
+  .form-sub { font-size: 0.82rem; color: var(--muted); margin: 8px 0 24px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  label { display: block; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+  .block { display: block; }
+  input, select, textarea {
+    display: block; width: 100%; margin-top: 8px; padding: 12px 14px; border: 1px solid var(--line);
+    background: var(--paper); font-family: var(--sans); font-size: 0.85rem; color: var(--ink);
+    text-transform: none; letter-spacing: normal;
+  }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
+  textarea { resize: vertical; }
+
+  .banner { position: relative; height: 300px; overflow: hidden; }
+  .banner img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .banner-overlay { position: absolute; inset: 0; background: rgba(30,24,18,0.4); }
+  .banner-copy { position: relative; height: 100%; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center; color: #fff; }
+  .banner-copy h2 { color: #fff; font-size: 2.2rem; }
+  .banner-copy p { margin-top: 8px; font-size: 0.9rem; }
+
+  @media (max-width: 900px) {
+    .body-grid { grid-template-columns: 1fr; }
+    .row { grid-template-columns: 1fr; }
+  }
+</style>

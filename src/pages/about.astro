@@ -1,0 +1,125 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const ethos = [
+  { title: 'Sustainable Sourcing', body: 'We prioritize materials that respect the earth. From recycled pulp packaging to botanical dyes, our footprint is as light as our aesthetic.',
+    icon: '<path d="M12 3C7 8 5 12 5 15a7 7 0 0 0 14 0c0-3-2-7-7-12z"></path>' },
+  { title: 'Artisan Quality', body: 'Every item is a testament to mastery. We partner with small-batch creators who refuse to compromise on the integrity of their craft.',
+    icon: '<path d="M4 14l8-8 6 6-8 8H4v-6z"></path><path d="M14 6l4 4"></path>' },
+  { title: 'Handcrafted Care', body: 'Human hands touch every step of our process. From the initial selection to the final handwritten note, the human connection is preserved.',
+    icon: '<path d="M4 13l6 6 10-12"></path>' },
+];
+---
+
+<Layout title="Our Story — Serene Gifting">
+  <Header active="about" />
+  <main class="about">
+    <section class="intro">
+      <div class="container intro-grid">
+        <div class="intro-copy">
+          <h1>Gifts that whisper,<br /><em>never shout.</em></h1>
+          <p>Serene Gifting was born from a simple realization: the most meaningful moments are often
+            the quietest. We curate tactile experiences that bridge the distance between people,
+            focusing on the intentionality behind every ribbon and wrap.</p>
+          <blockquote>"We don't just source products; we find stories. Each piece in our collection is
+            chosen because it carries the thumbprint of a maker, the scent of a workshop, or the
+            texture of history."</blockquote>
+        </div>
+        <div class="intro-img">
+          <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80" alt="A hand-wrapped gift with a sprig of lavender" />
+          <span class="established">Established<br />MMXXIV for<br />intentional<br />living</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ethos">
+      <div class="container">
+        <span class="eyebrow">Our Ethos</span>
+        <h2>Built on Quiet Integrity</h2>
+        <div class="cards">
+          {ethos.map((e) => (
+            <article class="ethos-card">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.4" set:html={e.icon} />
+              <h3>{e.title}</h3>
+              <p>{e.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="founder">
+      <div class="container founder-grid">
+        <div class="founder-img">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=80" alt="Eleanor Thorne, founder of Serene Gifting" />
+        </div>
+        <div class="founder-copy">
+          <span class="eyebrow">Our Founder</span>
+          <blockquote>"I believe the act of giving is a language of its own. My goal is to provide the
+            vocabulary for those who wish to speak with grace and sincerity."</blockquote>
+          <span class="signature">Eleanor Thorne</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-inner">
+        <h2>Ready to give with intent?</h2>
+        <a href="/shop" class="btn">Browse the Collection</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .intro { background: var(--paper); padding: 70px 0; }
+  .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .intro-copy h1 { font-size: 3rem; }
+  .intro-copy h1 em { font-style: italic; }
+  .intro-copy p { margin: 22px 0; font-size: 0.9rem; color: #4a4238; line-height: 1.8; }
+  .intro-copy blockquote {
+    margin: 0; background: #6a6a52; color: #fff; font-style: italic; font-size: 0.86rem;
+    line-height: 1.7; padding: 22px 24px;
+  }
+  .intro-img { position: relative; }
+  .intro-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+  .established {
+    position: absolute; left: -14px; bottom: -14px; background: #c99b6a; color: #fff;
+    font-size: 0.56rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+    line-height: 1.7; padding: 16px 18px;
+  }
+
+  .ethos { background: var(--cream-soft); }
+  .ethos h2 { font-size: 1.8rem; margin: 8px 0 34px; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .ethos-card { background: var(--paper); padding: 34px 28px; }
+  .ethos-card svg { color: var(--ink); margin-bottom: 26px; }
+  .ethos-card h3 { font-family: var(--serif); font-size: 1.3rem; margin-bottom: 12px; }
+  .ethos-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+
+  .founder { background: var(--paper); }
+  .founder-grid { display: grid; grid-template-columns: 320px 1fr; gap: 56px; align-items: center; }
+  .founder-img { border: 1px solid var(--line); padding: 10px; }
+  .founder-img img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+  .founder-copy blockquote {
+    margin: 14px 0 20px; font-family: var(--serif); font-style: italic; font-size: 1.5rem;
+    line-height: 1.5; color: var(--ink);
+  }
+  .signature { font-style: italic; font-size: 0.9rem; color: var(--muted); }
+
+  .cta { padding: 0; }
+  .cta-inner {
+    background: #c99b6a; text-align: center; padding: 64px 24px; margin: 0 auto;
+    max-width: var(--max);
+  }
+  .cta-inner h2 { color: #fff; font-size: 2.4rem; margin-bottom: 26px; }
+
+  @media (max-width: 900px) {
+    .intro-grid, .founder-grid { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+    .intro-copy h1 { font-size: 2.2rem; }
+  }
+</style>

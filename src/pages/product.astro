@@ -1,0 +1,183 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const gallery = [
+  'https://images.unsplash.com/photo-1607344645866-009c320b63e0?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=300&q=80',
+  'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=300&q=80',
+  'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=300&q=80',
+];
+
+const perks = [
+  'Includes premium hand-tied gift wrap',
+  'Free handwritten note card included',
+  'Eco-friendly, sustainable packaging',
+];
+
+const related = [
+  { name: 'Lavender Dream Set', price: '₹3,735',
+    img: 'https://images.unsplash.com/photo-1602874801007-bd458bb1b8b6?auto=format&fit=crop&w=600&q=80' },
+  { name: 'Morning Rituals Box', price: '₹5,146',
+    img: 'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?auto=format&fit=crop&w=600&q=80' },
+  { name: "Writer's Companion", price: '₹6,474',
+    img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80' },
+  { name: 'Pure Golden Honey Set', price: '₹3,154',
+    img: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600&q=80' },
+];
+---
+
+<Layout title="Signature Wellness Gift Box — Serene Gifting">
+  <Header active="shop" />
+  <main class="pdp">
+    <div class="container">
+      <nav class="crumbs"><a href="/">Home</a> › <a href="/shop">Gift Boxes</a> › <span>Signature Wellness Gift Box</span></nav>
+
+      <div class="hero">
+        <div class="gallery">
+          <div class="thumbs">
+            {gallery.slice(1).map((g) => <img src={g} alt="Gift box detail" />)}
+          </div>
+          <div class="main-img"><img src={gallery[0]} alt="Signature Wellness Gift Box" /></div>
+        </div>
+
+        <div class="buy">
+          <span class="eyebrow">Bestseller</span>
+          <h1>Signature Wellness<br />Gift Box</h1>
+          <div class="rating"><span class="stars">★★★★★</span> <span class="reviews">(48 Reviews)</span></div>
+          <div class="price">₹7,055</div>
+          <p class="desc">An intentionally curated collection designed to inspire moments of stillness
+            and restoration. This box features our hand-poured 'Quiet Morning' soy candle, a weighted
+            silk eye mask, and organic botanical tea. Perfect for birthdays, gratitude, or a thoughtful
+            'just because' gesture.</p>
+
+          <ul class="perks">
+            {perks.map((p) => (
+              <li>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <circle cx="12" cy="12" r="9"></circle><path d="M8 12l3 3 5-6"></path>
+                </svg>{p}
+              </li>
+            ))}
+          </ul>
+
+          <div class="actions">
+            <div class="qty"><button>−</button><span>1</span><button>+</button></div>
+            <button class="btn add">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M6 8h12l-1 12H7L6 8z"></path><path d="M9 8a3 3 0 0 1 6 0"></path>
+              </svg>Add to Cart
+            </button>
+          </div>
+          <button class="btn-outline">Send as a Gift</button>
+
+          <div class="assurances">
+            <span>🚚 Fast Shipping</span><span>🌿 Sustainable</span><span>🤲 Handmade</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <span class="tab active">The Contents</span>
+        <span class="tab">Shipping &amp; Returns</span>
+        <span class="tab">Personalization</span>
+      </div>
+      <div class="tab-body">
+        <div>
+          <h3>Curated Essentials</h3>
+          <p>Every item in this box is hand-selected from boutique makers who share our commitment to quality and intentionality.</p>
+        </div>
+        <div>
+          <h3>Sustainably Sourced</h3>
+          <p>From the 100% recycled paper box to the biodegradable packing fill, we prioritize the planet in every detail.</p>
+        </div>
+        <div>
+          <h3>Gift-Ready</h3>
+          <p>Arrives in a beautiful cream-colored rigid box, secured with a silk ribbon. No pricing information is included in the package.</p>
+        </div>
+      </div>
+
+      <section class="related">
+        <div class="rel-head">
+          <h2>You might also like</h2>
+          <a href="/shop" class="link-underline">View All Gifts</a>
+        </div>
+        <div class="rel-grid">
+          {related.map((r) => (
+            <a href="/product" class="card">
+              <div class="thumb"><img src={r.img} alt={r.name} /></div>
+              <h3>{r.name}</h3>
+              <span class="price">{r.price}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .pdp { background: var(--paper); padding: 26px 0 70px; }
+  .crumbs { font-size: 0.74rem; color: var(--muted); margin-bottom: 26px; }
+  .crumbs a:hover { color: var(--accent); }
+  .crumbs span { color: var(--tag); }
+
+  .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .gallery { display: grid; grid-template-columns: 66px 1fr; gap: 14px; }
+  .thumbs { display: flex; flex-direction: column; gap: 12px; }
+  .thumbs img { width: 66px; height: 66px; object-fit: cover; border: 1px solid var(--line); cursor: pointer; }
+  .main-img img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+
+  .buy .eyebrow { color: var(--tag); }
+  .buy h1 { font-size: 2.6rem; margin: 12px 0 14px; }
+  .rating { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+  .stars { color: var(--tag); letter-spacing: 2px; }
+  .reviews { font-size: 0.78rem; color: var(--muted); }
+  .price { font-family: var(--serif); font-size: 1.6rem; color: var(--accent); margin-bottom: 18px; }
+  .desc { font-size: 0.88rem; color: #4a4238; line-height: 1.75; }
+
+  .perks { list-style: none; padding: 0; margin: 22px 0; }
+  .perks li { display: flex; align-items: center; gap: 10px; font-size: 0.84rem; margin-bottom: 12px; }
+  .perks svg { color: var(--tag); flex-shrink: 0; }
+
+  .actions { display: flex; gap: 12px; margin-bottom: 12px; }
+  .qty { display: flex; align-items: center; border: 1px solid var(--line); }
+  .qty button { width: 40px; height: 48px; background: none; border: none; font-size: 1.1rem; cursor: pointer; color: var(--ink); }
+  .qty span { width: 40px; text-align: center; font-size: 0.9rem; }
+  .add { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.8rem; }
+  .btn-outline {
+    width: 100%; background: none; border: 1px solid var(--line); color: var(--tag);
+    padding: 14px; font-family: var(--sans); font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer;
+  }
+  .btn-outline:hover { border-color: var(--tag); }
+
+  .assurances { display: flex; justify-content: center; gap: 30px; margin-top: 26px; font-size: 0.72rem; color: var(--muted); }
+
+  .tabs { display: flex; gap: 34px; border-bottom: 1px solid var(--line); margin: 56px 0 34px; }
+  .tab { padding-bottom: 14px; font-size: 0.9rem; color: var(--muted); cursor: pointer; }
+  .tab.active { color: var(--accent); border-bottom: 2px solid var(--accent); }
+
+  .tab-body { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .tab-body h3 { font-family: var(--serif); font-size: 1.15rem; margin-bottom: 12px; }
+  .tab-body p { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+
+  .related { margin-top: 72px; }
+  .rel-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 26px; }
+  .rel-head h2 { font-size: 1.7rem; }
+  .rel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .rel-grid .card { display: block; }
+  .rel-grid .thumb { aspect-ratio: 1/1; overflow: hidden; }
+  .rel-grid .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .rel-grid .card:hover .thumb img { transform: scale(1.05); }
+  .rel-grid h3 { font-family: var(--serif); font-size: 1.05rem; margin-top: 12px; }
+  .rel-grid .price { font-size: 0.8rem; margin-top: 4px; }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .tab-body { grid-template-columns: 1fr; gap: 24px; }
+    .rel-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

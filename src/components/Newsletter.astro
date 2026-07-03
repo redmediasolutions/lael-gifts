@@ -1,0 +1,57 @@
+---
+---
+
+<section class="newsletter">
+  <div class="container inner">
+    <h2>Join the Serene Community</h2>
+    <p>
+      Be the first to hear about new collections, seasonal gift guides, and
+      the stories behind our makers.
+    </p>
+    <form class="signup" onsubmit="return false;">
+      <input type="email" placeholder="Email address" aria-label="Email address" required />
+      <button type="submit" class="btn">Subscribe</button>
+    </form>
+    <span class="fineprint">Minimalist inbox. No spam. Unsubscribe anytime.</span>
+  </div>
+</section>
+
+<style>
+  .newsletter { background: var(--cream); text-align: center; }
+  .inner { max-width: 520px; }
+  .newsletter h2 { font-style: italic; font-size: 1.9rem; }
+  .newsletter p {
+    margin: 14px auto 26px;
+    font-size: 0.86rem;
+    color: var(--muted);
+    max-width: 380px;
+  }
+  .signup {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .signup input {
+    flex: 0 1 240px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    padding: 13px 16px;
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    color: var(--ink);
+  }
+  .signup input:focus { outline: none; border-color: var(--accent); }
+  .fineprint {
+    display: block;
+    margin-top: 18px;
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  @media (max-width: 720px) {
+    .signup { flex-direction: column; align-items: stretch; }
+    .signup input { flex: 1; }
+  }
+</style>

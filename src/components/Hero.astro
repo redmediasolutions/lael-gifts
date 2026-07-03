@@ -1,0 +1,68 @@
+---
+const bg =
+  'https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=1600&q=80';
+---
+
+<section class="hero" id="shop">
+  <img class="hero-bg" src={bg} alt="Beautifully wrapped artisanal gift boxes on a wooden table" />
+  <div class="hero-overlay"></div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <h1>The Art of Intentional<br />Giving.</h1>
+      <p>
+        Curated collections designed to honor life’s quietest
+        moments and grandest occasions through
+        craftsmanship and care.
+      </p>
+      <a href="#bestsellers" class="btn">Shop the Collection</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding: 0;
+    height: 560px;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(30,24,18,0.45) 0%, rgba(30,24,18,0.15) 45%, rgba(30,24,18,0) 70%);
+  }
+  .hero-inner {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .hero-copy { max-width: 440px; color: #fff; }
+  .hero-copy h1 {
+    font-size: 3.4rem;
+    color: #fff;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.25);
+  }
+  .hero-copy p {
+    margin: 20px 0 28px;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    max-width: 330px;
+    color: rgba(255,255,255,0.92);
+  }
+
+  @media (max-width: 720px) {
+    .hero { height: 480px; }
+    .hero-copy h1 { font-size: 2.4rem; }
+    .hero-overlay {
+      background: linear-gradient(90deg, rgba(30,24,18,0.6), rgba(30,24,18,0.25));
+    }
+  }
+</style>
